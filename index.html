@@ -4,18 +4,32 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Happy Birthday!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Pacifico&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Happy Birthday, Name! 🎂</h1>
-  <p>🍓:
-🖼 Photo
-
-🍓:
-I hope life treats you kindly and brings you all the happiness you deserve. May all your little dreams come true. So grateful to have you in my life. Stay happy and keep being you!</p>
-  <img src="1.jpg" alt="Our photo">
+  <h1>Happy Birthday, My Favorite Toxic! 🎂</h1>
+  <p id="text">Click the button for a wish!</p>
+  <img id="photo" src="c:\Users\fn0034\Downloads\ayezinmyo.jpg" alt="Our photo">
   <button id="wish">Click for a wish 💌</button>
+  <p id="counter"></p>
+
+  <div class="menu">
+    <a class="link" href="candles.html">🕯️ Blow the candles</a>
+    <a class="link" href="quiz.html">😈 A little question</a>
+  </div>
+
+  <div id="secret" class="secret">
+    <div class="secretBox">
+      <p id="secretText">You found the secret! 🤫</p>
+      <button id="close">Close</button>
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script src="common.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

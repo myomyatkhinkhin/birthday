@@ -1,4 +1,3 @@
-// ဆုမွန်ကောင်းစာတွေကို ဒီမှာ ပြင်ပါ
 const wishes = [
   "Wishing you health, happiness and all your dreams coming true.",
   "I am so lucky to have a friend like you.",
@@ -7,23 +6,52 @@ const wishes = [
   "Happy Birthday! Love, Your Friend ❤️"
 ];
 
-const text = document.querySelector("p");
+const text = document.getElementById("text");
 const button = document.getElementById("wish");
-let index = 0;
+const photo = document.getElementById("photo");
+const counter = document.getElementById("counter");
+const secret = document.getElementById("secret");
 
-function celebrate() {
-  confetti({
-    particleCount: 150,
-    spread: 90,
-    origin: { y: 0.6 }
-  });
+let index = 0;
+let typing;
+let taps = 0;
+
+function typeText(message) {
+  clearInterval(typing);
+  text.textContent = "";
+  const chars = Array.from(message);
+  let i = 0;
+  typing = setInterval(function () {
+    text.textContent += chars[i];
+    i++;
+    if (i >= chars.length) clearInterval(typing);
+  }, 35);
 }
 
 button.addEventListener("click", function () {
-  text.textContent = wishes[index];
+  typeText(wishes[index]);
+  counter.textContent = "Wish " + (index + 1) + " / " + wishes.length;
   index = (index + 1) % wishes.length;
   celebrate();
 });
 
-// စာမျက်နှာ ဖွင့်တာနဲ့ confetti တစ်ခါ ပေါက်မယ်
+photo.addEventListener("click", function () {
+  photo.classList.add("spin");
+  setTimeout(function () { photo.classList.remove("spin"); }, 800);
+
+  const heart = confetti.shapeFromText({ text: "💖", scale: 3 });
+  confetti({ shapes: [heart], scalar: 3, particleCount: 30, spread: 120, origin: { y: 0.6 } });
+
+  taps++;
+  if (taps === 5) {
+    secret.classList.add("show");
+    fireworks();
+    taps = 0;
+  }
+});
+
+document.getElementById("close").addEventListener("click", function () {
+  secret.classList.remove("show");
+});
+
 window.addEventListener("load", celebrate);
